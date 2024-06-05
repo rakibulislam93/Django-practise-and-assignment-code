@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><a href="/first_app/home/">Home</a></h1>
+    <h1><a href="/first_app/about/">First_app/About</a></h1>
+    <h1><a href="/first_app/contact/">First_app/Contact</a></h1>
+
+    <h3>This is home page</h3>
+
+    <h4>Name size : {{name | length}}</h4>
+    <h4>Before age : {{age}}</h4>
+    <h4>After add filter age : {{age | add:'2'}}</h4>
+    <h4>{{"i'm raki'bul islam" | addslashes}}</h4>
+    <h4>Capfirst filter : {{"rakibul" | capfirst}}</h4>
+    <h4>Center filter : {{"rakibul" | center:'50'}}</h4>
+    <h3>Cut filter : {{"rakibul islam arif" | cut:' '}}</h3>
+    <h3>{{date | date:"D d M Y"}}</h3>
+    <h3>{{"" | default:"nothing"}}</h3>
+    <h3>Jokhn empty thakbe : {{empt | default:"nothing"}}</h3>
+    <h4>{{student}}</h4>
+    <h4>name er respect a sort : {{student | dictsort:"name"}}</h4>
+    <h4>Divisible filter : {{21 | divisibleby:'4'}}</h4>
+    <h4>Divisible filter : {{21 | divisibleby:'3'}}</h4>
+    <h4>Fist value filter : {{student | first}}</h4>
+    <h4>{{ "one" | linenumbers }}</h4>
+    <h4>Lower filter : {{'MY NAME IS RAKIB' | lower}}</h4>
+    <h4>make_list filter : {{'123456' | make_list}}</h4>
+    <h4>random filter : {{"[1,2,3,4]" | random}}</h4>
+
+    <h4>Join filter : {{ val | join:" - "}}</h4>
+    
+</body>
+</html>

@@ -1,0 +1,13 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{{block.super}}
+<div class="container" style="height: 100vh; background-color: antiquewhite;">
+    <div class="container d-flex justify-content-between p-5">
+        <h3 class="d-flex align-items-center">This is default home page</h3>
+        <img src="{% static 'images.jpg' %}" alt="image 1">
+    </div>
+</div>
+{% endblock %}

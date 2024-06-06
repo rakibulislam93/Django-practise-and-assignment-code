@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{{block.super}}
+
+<div class="container d-flex justify-content-center gap-3 p-5">
+    <input style="width: 50%; border-radius: 7px;box-shadow: 2px 4px 8px;border: none;" class="p-2" type="text" placeholder="Search your meal">
+    <button type="button" class="btn btn-warning">Search</button>
+</div>
+
+<div class="container d-flex flex-wrap justify-content-center gap-4">
+{% for i in meals %}
+    
+<div class="card" style="width: 18rem;">
+    <img src="{{i.strMealThumb}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{i.strMeal}}</h5>
+      <h6 class="card-title">Meal ID : {{i.idMeal}}</h6>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">View Details</a>
+    </div>
+</div>
+    
+{% endfor %}
+</div>
+
+{% endblock %}

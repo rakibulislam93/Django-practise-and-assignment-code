@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+{% comment %} <h1 class="mt-5">This is the login page</h1> {% endcomment %}
+{%if messages%}
+{%for msg in messages%}
+<h4 class="text-success pt-5 mt-5 d-flex justify-content-center">{{msg}}</h4>
+{%endfor%}
+{%endif%}
+<form method="post" class="w-50 m-auto mt-5 pt-5">
+    {% csrf_token %}
+    <!-- {{ form | crispy }} -->
+    {% for fm in form %}
+        {{fm.label_tag}}
+        {{fm}}
+        {{fm.errors}}
+    {% endfor %}
+    <button type="submit" class="btn btn-warning mt-3">Submit</button>
+</form>
+
+{% endblock %}

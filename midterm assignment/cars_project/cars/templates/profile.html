@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{%block content%}
+
+<h1>This is profile page..</h1>
+
+
+{%if messages%}
+{%for msg in messages%}
+<h4 class="text-success mt-5 d-flex justify-content-center">{{msg}}</h4>
+{%endfor%}
+{%endif%}
+
+<h5 class="p-5">Welcome {{user}}</h5>
+<a href="{% url 'pass_change' %}"><button class="btn btn-warning m-5">Change your password</button></a>
+<a href="{% url 'update_profile' %}"><button class="btn btn-warning m-5">Update your profile</button></a>
+<h4 class="d-flex justify-content-center mb-5">Your Total Purchase Car : {{purchases|length}}</h4>
+<div class="d-flex flex-wrap gap-3  justify-content-center">
+{%for cr in purchases%}
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <img src="{{cr.car.image.url}}" class="card-img-top" alt="...">
+      
+    <h5 class="card-title">Brand : {{cr.car.brand.name}}</h5>
+    
+    <h6><b>Car Name : </b> {{ cr.car.name }} </h6>
+    <h6><b>Car Price : </b> {{ cr.car.price }}$ </h6>
+    <small><b>Car Purchases Date : </b> {{ cr.purchase_date }} </small>
+
+    
+    <p class="card-text"><b>Description : </b>With supporting text below as a natural lead-in to additional content.</p>
+    
+    <a href="{% url 'detail_car' cr.car.id %}" class="btn btn-primary">View Details</a>
+  </div>
+</div>
+{%endfor%}
+
+</div>
+
+{%endblock%}

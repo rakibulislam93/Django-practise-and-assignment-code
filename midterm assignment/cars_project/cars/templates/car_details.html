@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{%load crispy_forms_tags%}
+
+{%block content%}
+
+<div class="mt-5 pt-5" >
+{%if messages%}
+{%for msg in messages%}
+<h4 class="text-success mt-5 d-flex justify-content-center">{{msg}}</h4>
+{%endfor%}
+{%endif%}
+</div>
+<div class="d-flex flex-wrap m-2 justify-content-around mt-5 border mb-5 ">
+    
+    <div>
+        <img style="width:500px;" src="{{car.image.url}}" class="card-img-top m-3" alt="...">
+    </div>
+    <div class="mt-3 mb-3">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h6 class="card-title">Brand Name : {{car.brand.name}}</h6>
+                <h6 class="card-title">Car Name : {{car.name}}</h6>
+                <h6 class="card-title">Car Price : {{car.price}}$</h6>
+                {% if request.user.is_authenticated %}
+                    <h6 class="card-title">Quantity : {{car.quantity}} pis</h6>
+                {%endif%}
+              <p class="card-text"><b>Description :</b> {{car.description | truncatewords:20}}</p>
+              {%if request.user.is_authenticated%}
+              <form method="post" action="{% url 'buy_car' car.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Buy Now</button>
+            </form>
+            {%endif%}
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="card m-2">
+    <h5>Total Comments : {{comments | length}}</h5>
+    {% for comment in comments %}
+    <div class="card-body border m-2">
+      <b>{{comment.name}}</b> {{comment.created_on}}
+      <p>{{comment.body}}</p>
+    </div>
+    {%endfor%}
+</div>
+
+<div class="card m-2">
+    <div class="card-body">
+        <form method = 'post'>
+            {% csrf_token %}
+            <h3>Add Comment</h3>
+            <!-- {{comment_form | crispy}} -->
+
+            {%for fm in comment_form %}
+            {{fm.label_tag}}
+            {{fm}}
+            {{fm.errors}}
+            {%endfor%}
+            
+            <button type="submit" class="btn btn-success mt-3">Submit</button>
+        </form>
+    </div>
+</div>
+
+{%endblock%}

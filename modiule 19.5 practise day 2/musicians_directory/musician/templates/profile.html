@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{%load crispy_forms_tags%}
+{%block content%}
+
+{%if messages%}
+{%for msg in messages%}
+{{msg}}
+{%endfor%}
+{%endif%}
+
+<h1>This is profile page...</h1>
+
+{%endblock%}

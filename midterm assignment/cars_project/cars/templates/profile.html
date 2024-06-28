@@ -12,6 +12,7 @@
 {%endif%}
 
 <h5 class="p-5">Welcome {{user}}</h5>
+
 <a href="{% url 'pass_change' %}"><button class="btn btn-warning m-5">Change your password</button></a>
 <a href="{% url 'update_profile' %}"><button class="btn btn-warning m-5">Update your profile</button></a>
 <h4 class="d-flex justify-content-center mb-5">Your Total Purchase Car : {{purchases|length}}</h4>

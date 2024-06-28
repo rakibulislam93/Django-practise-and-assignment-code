@@ -114,9 +114,11 @@ class Password_change_view(PasswordChangeView):
     form_class = passwordChangingForm
     template_name = 'pass_change.html'
     success_url = reverse_lazy('profilepage')
+    def form_valid(self, form):
 
-    # def password_success(request):
-    #     return render(request,'pass_change.html')
+        messages.success(self.request, 'Your password changed successfully!')
+        return super().form_valid(form)
+
 
 @login_required
 def UpdateProfile(request):
@@ -124,6 +126,7 @@ def UpdateProfile(request):
         form = UserUpdateForm(request.POST,instance=request.user)
         if form.is_valid():
             form.save()
+            messages.success(request,'Your profile update successfully')
             return redirect('profilepage')
     else:
         form = UserUpdateForm(instance=request.user)

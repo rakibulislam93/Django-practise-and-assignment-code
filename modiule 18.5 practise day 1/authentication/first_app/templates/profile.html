@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{%block content%}
+
+{% if messages %}
+{%for msg in messages %}
+{{msg}}
+{%endfor%}
+{%endif%}
+
+<h1>This is profile page</h1>
+<a href="{% url 'edit_profile' %}"><button class="btn btn-warning">Update your profile</button></a>
+<a href="{% url 'pass_change' %}"><button class="btn btn-warning">Password Change</button></a>
+<a href="{% url 'pass_change_old' %}"><button class="btn btn-warning">Password Change without old pass</button></a>
+{%endblock%}
